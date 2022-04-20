@@ -4,12 +4,24 @@ public class Courier extends Person implements Deliverable, Callable, Actions {
     Scanner in = new Scanner(System.in);
     String orderForDelivery;
     String addressOfClient;
+    Boolean status;
+
 
     public Courier(String name, String phoneNumber, int id, String orderForDelivery, String addressOfClient) {
         super(name, phoneNumber, id);
         this.orderForDelivery = orderForDelivery;
         this.addressOfClient = addressOfClient;
+//        this.status = status;
     }
+
+
+    public void setStatus() {
+        if (!orderForDelivery.isEmpty()) {
+            this.status = true;
+        }
+        this.status = false;
+    }
+
 
     @Override
     public void info() {
@@ -18,11 +30,13 @@ public class Courier extends Person implements Deliverable, Callable, Actions {
         System.out.println("id: " + getId());
         System.out.println("order: " + orderForDelivery);
         System.out.println("address: " + addressOfClient);
+        System.out.println("status: " + status);
         action();
     }
 
     @Override
     public void deliver() {
+        status = true;
         System.out.println("Deliver the " + orderForDelivery + " product to the address " + addressOfClient);
     }
 
@@ -47,5 +61,6 @@ public class Courier extends Person implements Deliverable, Callable, Actions {
             info();
         }
     }
+
 }
 

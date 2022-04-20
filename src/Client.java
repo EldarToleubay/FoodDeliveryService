@@ -22,6 +22,7 @@ public class Client extends Person implements Callable, Actions{
     }
 
     public void order() {
+
         System.out.println("You ordered " + clientOrder + "\nWe will deliver it to you soon");
     }
 
@@ -30,7 +31,7 @@ public class Client extends Person implements Callable, Actions{
         System.out.println("Calling to courier...");
         System.out.println("Calling to the couries... x - end the call");
         String callEnd = in.next();
-        if (Objects.equals(callEnd, "x")) {
+        if (callEnd.equals("x")) {
             System.out.println("call completed");
 
         }else {
@@ -40,13 +41,15 @@ public class Client extends Person implements Callable, Actions{
 
     @Override
     public void action() {
-        System.out.println("Choose action 1 - order, 2 call");
+        System.out.println("Choose action 1 - order, 2 call , 3 info");
         int choseAction;
         choseAction = in.nextInt();
         if (choseAction == 1) {
             order();
         } else if (choseAction == 2) {
             call();
+        }else if (choseAction == 3) {
+            info();
         }
     }
 }
